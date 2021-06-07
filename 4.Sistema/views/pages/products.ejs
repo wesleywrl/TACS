@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Products</h1>
+
+    <!-- Table -->
+    <section>
+
+      <div class="row">
+        <div class="col-6">
+          <a href="/products/importar" class="button primary small">Importar Produtos</a>
+          <a href="/products/exportar" class="button default small">Exportar Produtos</a>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-2">
+          <a href="/products/create" class="button default small">Cadastrar Produto</a>
+        </div>
+      </div>
+
+      <%- message %>
+      <hr>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Descrição</th>
+              <th>Preço do Produto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.forEach(function(product) { %>
+            <tr>
+              <td> <%= product.id %> </td>
+              <td> <%= product.description %> </td>
+              <td> <%= product.price %> </td>
+            </tr>
+            <% }); %>
+          </tbody>
+          <!-- <tfoot>
+            <tr>
+              <td colspan="2"></td>
+              <td>100.00</td>
+            </tr>
+          </tfoot> -->
+        </table>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,6 @@
+dist
+csv
+node_modules
+logs
+.env
+yarn-error.log

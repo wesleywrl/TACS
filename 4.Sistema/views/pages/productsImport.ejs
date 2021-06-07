@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Importar Produtos</h1>
+
+    <!-- Table -->
+    <section>
+
+      <%= message %>
+
+      <form method="post" action="/products/importar" enctype="multipart/form-data">
+        <div class="row gtr-uniform">
+          <div class="col-12">
+            <label for="csv">CSV de Produtos</label>
+            <input type="file" name="csv" id="csv" placeholder="CSV de Produtos" />
+          </div>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Importar" class="primary" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

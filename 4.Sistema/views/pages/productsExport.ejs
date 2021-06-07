@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Exportar Produtos</h1>
+
+    <!-- Table -->
+    <section>
+
+      <%= message %>
+
+      <form method="post" action="/products/exportar">
+        <div class="row gtr-uniform">
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Exportar" class="primary" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>
