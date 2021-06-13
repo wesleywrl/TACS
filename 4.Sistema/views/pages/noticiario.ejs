@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Noticiário de Negócios NY Times</h1>
+
+    <!-- Table -->
+    <section>
+      <%- message %>
+      <hr>
+
+      
+      <div class="col-6 col-12-medium">
+        <h3>Principais Notícias de Negócios</h3>
+          <% noticias.forEach(function(noticia) { %>
+            <article>
+              <p><%= noticia.title %></p>
+              <p><a href="<%= noticia.short_url %>"><%= noticia.short_url %></a></p>
+              <p><%= noticia.byline %></p>
+            </article>
+            <hr>
+          <% }); %>
+
+      </div>
+    
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

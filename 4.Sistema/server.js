@@ -23,6 +23,7 @@ const routesProduct = require('./routes/product.js');
 const routesLog = require('./routes/logs.js');
 const routesUsuario = require('./routes/usuario');
 const routesAuth = require('./routes/auth.js');
+const routesNoticiario = require('./routes/noticiario');
 
 const logger = log4js.getLogger('systemlog');
 
@@ -74,6 +75,7 @@ routesAuth(app, logger);
 routesProduct(app, restrict, logger);
 routesLog(app, restrict, logger);
 routesUsuario(app, restrict, logger);
+routesNoticiario(app, restrict, logger);
 routes(app, restrict, logger);
 
 // ================================================================

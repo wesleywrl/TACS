@@ -16,7 +16,7 @@ module.exports = function (app, logger) {
           // in the session store to be retrieved,
           // or in this case the entire user object
           req.session.user = user;
-          res.redirect('/products');
+          res.redirect('/');
         });
       } else {
         logger.trace('Tentativa de login mal sucedida');

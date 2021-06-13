@@ -1,18 +1,23 @@
-const fs = require('fs');
+'use strict';
+
+const {  } = require('../model/noticiario');
 
 module.exports = function (app, restrict, logger) {
   app.get('/logs', restrict, function (req, res) {
-    //vlogger.fatal("Erro fatal ao acessar a página de logs, brincadeirinha.");
+    logger.trace('Tela de Noticiários acessados');
 
-    // **modify your existing code here**
-    fs.readFile('logs/systemlog.log', 'utf8', (e, data) => {
-      if (e) throw e;
-      console.error("Data:", data);
-      res.render('pages/logs', {
-        linhasLog: data
-      });
+    getNoticiario(function (err, noticiario) {
+      if (!err) {
+        res.render('pages/noticiario', {
+          noticiario: noticiario
+        });
+      } else {
+        req.session.error = err;
+        res.render('pages/noticiario', {
+          noticiario: [],
+        });
+      }
     });
-
 
   });
 }

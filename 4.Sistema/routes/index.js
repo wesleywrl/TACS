@@ -1,12 +1,13 @@
 'use strict';
 
 module.exports = function (app, restrict, logger) {
-  app.get('/', function (req, res) {
+  
+  app.get('/login', function (req, res) {
     res.render('auth/login');
   });
 
-  app.get('/login', function (req, res) {
-    res.render('auth/login');
+  app.get('/', restrict, function (req, res) {
+    res.render('pages/home');
   });
 
   app.get('/generic', restrict, function (req, res) {
