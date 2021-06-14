@@ -3,6 +3,7 @@
 // ================================================================
 // get all the tools we need
 // ================================================================
+const fs = require('fs');
 const dotenv = require('dotenv');
 const result = dotenv.config()
 if (result.error) {
@@ -12,9 +13,17 @@ if (result.error) {
 const express = require('express');
 const session = require('express-session');
 const log4js = require('log4js');
+
+var dir = './logs';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+fs.writeFileSync(dir + '/systemlog.log', '');
+
 log4js.configure({
   appenders: { systemlog: { type: "file", filename: "logs/systemlog.log" } },
-  categories: { default: { appenders: ["systemlog"], level: "error" } }
+  categories: { default: { appenders: ["systemlog"], level: "trace" } }
 });
 
 
@@ -27,7 +36,7 @@ const routesNoticiario = require('./routes/noticiario');
 
 const logger = log4js.getLogger('systemlog');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3838;
 
 const app = express();
 app.use(express.urlencoded({ extended: false }))
@@ -77,6 +86,7 @@ routesLog(app, restrict, logger);
 routesUsuario(app, restrict, logger);
 routesNoticiario(app, restrict, logger);
 routes(app, restrict, logger);
+
 
 // ================================================================
 // start our server

@@ -4,11 +4,13 @@ const fs = require('fs');
 
 module.exports = function (app, restrict, logger) {
   app.get('/logs', restrict, function (req, res) {
-    //vlogger.fatal("Erro fatal ao acessar a página de logs, brincadeirinha.");
+    logger.trace("Tela de logs acessada.");
 
-    // **modify your existing code here**
     fs.readFile('logs/systemlog.log', 'utf8', (e, data) => {
-      if (e) throw e;
+      if (e) {
+        console.log('Error accessing file system:', e);
+        throw e;
+      };
       console.error("Data:", data);
       res.render('pages/logs', {
         linhasLog: data

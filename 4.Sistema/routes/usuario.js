@@ -4,7 +4,7 @@ const { cadastrarUsuario } = require('../model/usuarios/usuarios');
 
 module.exports = function (app, restrict, logger) {
   app.get('/usuario', restrict, function (req, res) {
-    logger.info("Acessou página de usuários.");
+    logger.trace("Acessou página de usuários.");
 
     getUsuarios(function (err, usuarios) {
       if (!err) {
@@ -21,12 +21,12 @@ module.exports = function (app, restrict, logger) {
   });
 
   app.get('/usuario/cadastrar', restrict, function (req, res) {
-    logger.info("Acessou página de usuários - cadastrar.");
+    logger.trace("Acessou página de usuários - cadastrar.");
     res.render('pages/usuarioCadastrar');
   });
 
   app.post('/usuario/cadastrar', restrict, function (req, res) {
-    logger.info('Acessou post de usuario.');
+    logger.trace('Acessou post de usuario.');
 
     const { nome, email, senha } = req.body;
 

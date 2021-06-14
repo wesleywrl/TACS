@@ -81,7 +81,7 @@ module.exports = function (app, restrict, logger) {
         importProducts(fileRows, function (err, result) {
           console.log('Err, result', err, result);
           if (err) {
-            logger.error('Erro ao importar produtos.');
+            logger.trace('Erro ao importar produtos.');
             req.session.error = result;
           } else {
             req.session.success = 'Importação bem sucedida.'
