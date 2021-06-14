@@ -6,7 +6,7 @@ module.exports = function (email, password, callback) {
     if (err || res.rows.length == 0) {
       callback(true, 'Usuário não encontrado');
     } else {
-      const compareResult = password == 'oi' // bcrypt.compareSync(password, res.rows[0].password);
+      const compareResult = bcrypt.compareSync(password, res.rows[0].password);
       if (compareResult) {
         delete res.rows[0].password;
         callback(false, res.rows[0]);
